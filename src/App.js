@@ -1,9 +1,10 @@
-import { Route, Routes } from "react-router-dom";
-import Navbar from "./components/Navbar";
+import { Route, Routes, useNavigate } from "react-router-dom";
 import UserContext from "./context/UserContext";
 import { useEffect, useState } from "react";
 import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
 import Home from "./pages/home";
+import Navbar from "./components/Navbar";
+
 
 function App() {
   const [user, setUser] = useState(false);
@@ -18,15 +19,12 @@ function App() {
 
   return (
     <QueryClientProvider client={queryClient}>
-         <UserContext.Provider value={[user, setUser]}>
-      <div className="App font-arial ">
-        <Navbar user={user} setUser={setUser} />
+      <UserContext.Provider value={[user, setUser]}>
+        <Navbar />
         <Routes>
           <Route path="/" Component={Home} />
-
         </Routes>
-      </div>
-    </UserContext.Provider>
+      </UserContext.Provider>
     </QueryClientProvider>
   );
 }
