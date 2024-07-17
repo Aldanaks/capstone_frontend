@@ -39,11 +39,8 @@
     ]
   },
   "devDependencies": {
-<<<<<<< HEAD
     "prettier": "^3.0.0-alpha.6",
-=======
     "daisyui": "^4.12.10",
->>>>>>> origin/main
     "tailwindcss": "^3.4.4"
   }
 }
