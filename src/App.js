@@ -11,6 +11,11 @@ import ProductDetails from "./pages/ProductDetails";
 import Receipt from "./pages/Receipt";
 import CustomerSupport from "./pages/CustomerSupport";
 
+import CreatorsLink from "./pages/CreatorsLink";
+
+
+
+
 function App() {
   const [user, setUser] = useState(false);
 
@@ -34,6 +39,7 @@ function App() {
           <Route path="/productdetails/:productId" Component={ProductDetails} />
           <Route path="/Receipt" Component={Receipt} />
           <Route path="/customersupport" Component={CustomerSupport} />
+          <Route path="creatorslink" Component={CreatorsLink} />
         </Routes>
       </UserProvider>
     </QueryClientProvider>
