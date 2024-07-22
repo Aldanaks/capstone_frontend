@@ -4,7 +4,7 @@ import { useEffect, useState } from "react";
 import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
 import Home from "./pages/Home";
 import Navbar from "./components/Navbar";
-import CreatorsLink from "./pages/CreatorsLink";
+import CreatorsLink from "../pages/CreatorsLink";
 import Cart from "./pages/Cart";
 import CheckOut from "./pages/CheckOut";
 import ProductDetails from "./pages/ProductDetails";
