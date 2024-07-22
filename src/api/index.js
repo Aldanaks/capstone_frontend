@@ -1,8 +1,11 @@
 import axios from "axios";
 import { getToken } from "./storage";
 
+
+const BASE_URL= "http://localhost:8000";
+
 const instance = axios.create({
-  baseURL: "http://localhost:8000",
+  baseURL: BASE_URL,
 });
 
 instance.interceptors.request.use((config) => {
@@ -13,4 +16,6 @@ instance.interceptors.request.use((config) => {
   return config;
 });
 
-export default instance;
+export {BASE_URL}
+export default instance
+
