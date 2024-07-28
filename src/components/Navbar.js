@@ -1,14 +1,23 @@
 import React, { useContext } from "react";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import UserContext from "../context/UserContext";
 
 const Navbar = () => {
   const { cartCount, getTotalPrice } = useContext(UserContext);
+  const navigate = useNavigate();
 
   return (
     <div className="navbar bg-base-100">
       <div className="flex-1">
-        <a className="btn btn-ghost text-xl">Fluid</a>
+        <a className="btn btn-ghost text-xl  hover:text-purple-500">
+          <button
+            className=""
+            type="button"
+            onClick={() => navigate(`/creatorUsername`)}
+          >
+            Fluid
+          </button>
+        </a>
       </div>
       <div className="flex-none">
         <div className="dropdown dropdown-end">
@@ -38,12 +47,17 @@ const Navbar = () => {
             <div className="card-body">
               <span className="text-lg font-bold">{cartCount} Items</span>
               <span className="text-info">Subtotal: {getTotalPrice()} KD </span>
-              <div className="card-actions">
-                <button className="btn btn-primary btn-block">
+              <div className="card-actions flex justify-between p-0">
+                <button className=" flex justify-start">
                   <Link to="/cart" className="btn btn-primary">
                     View Cart
                   </Link>
                 </button>
+                {/* <button className="flex justify-end">
+                  <Link to="/checkout" className="btn btn-primary">
+                    CheckOut
+                  </Link>
+                </button> */}
               </div>
             </div>
           </div>

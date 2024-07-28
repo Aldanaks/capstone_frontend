@@ -4,7 +4,7 @@ import { BASE_URL } from "../api";
 import { useNavigate } from "react-router";
 
 const Cart = () => {
-  const { cartItems, cartCount, removeFromCart, addToCart } =
+  const { cartItems, cartCount, removeFromCart, addToCart, user } =
     useContext(UserContext);
   const navigate = useNavigate();
 
@@ -18,6 +18,8 @@ const Cart = () => {
   const handleCardClick = (item) => {
     navigate(`/productdetails/${item._id}`);
   };
+
+  console.log(user.username);
 
   return (
     <div className="h-screen flex items-center justify-center relative overflow-hidden">
@@ -79,19 +81,19 @@ const Cart = () => {
               <button
                 className="btn btn-primary text-white ml-3"
                 type="button"
-                onClick={() => navigate(`/creatorUsername`)}
+                onClick={() => navigate(`/${user?.username}`)}
               >
                 Continue Shopping
               </button>
             </div>
           </>
         ) : (
-          <div className="text-center mt-10">
+          <div className="text-center m-10">
             <h2 className="text-2xl font-bold">Your cart is empty</h2>
             <button
-              className="btn btn-primary text-white ml-3"
+              className="btn btn-primary text-white m-3"
               type="button"
-              onClick={() => navigate(`/creatorUsername`)}
+              onClick={() => navigate(`/${user?.username}`)}
             >
               Start Shopping
             </button>

@@ -7,7 +7,7 @@ const getAllProducts = async () => {
 };
 
 const getProduct = async (productId) => {
-  const { data } = await instance.get(`/product/:id/${productId}`);
+  const { data } = await instance.get(`/product/${productId}`);
   return data;
 };
 export { getAllProducts, getProduct };
