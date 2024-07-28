@@ -18,6 +18,8 @@ const Cart = () => {
     navigate(`/productdetails/${item._id}`);
   };
 
+  console.log(user.username);
+
   return (
     <div className="h-screen flex items-center justify-center relative overflow-hidden">
       <div className="flex-col overflow-y-auto h-full w-full max-w-4xl m-10">
@@ -76,19 +78,21 @@ const Cart = () => {
                 Check Out
               </button>
               <button
-                className="btn btn-primary text-white"
-                onClick={() => navigate(`/${user.username}`)}
+                className="btn btn-primary text-white ml-3"
+                type="button"
+                onClick={() => navigate(`/${user?.username}`)}
               >
                 Go Shopping
               </button>
             </div>
           </>
         ) : (
-          <div className="text-center mt-10">
+          <div className="text-center m-10">
             <h2 className="text-2xl font-bold">Your cart is empty</h2>
             <button
-              className="btn btn-primary text-white"
-              onClick={() => navigate(`/${user.username}`)}
+              className="btn btn-primary text-white m-3"
+              type="button"
+              onClick={() => navigate(`/${user?.username}`)}
             >
               Start Shopping
             </button>
