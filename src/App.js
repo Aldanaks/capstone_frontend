@@ -17,13 +17,7 @@ const stripePromise = loadStripe(
 );
 
 function App() {
-  const [user, setUser] = useState(false);
-
-  useEffect(() => {
-    if (localStorage.getItem("token")) {
-      setUser(true);
-    }
-  }, []);
+  const [user, setUser] = useState();
 
   const queryClient = new QueryClient();
 

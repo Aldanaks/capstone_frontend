@@ -2,7 +2,6 @@ import React, { useContext } from "react";
 import UserContext from "../context/UserContext";
 import { BASE_URL } from "../api";
 import { useNavigate } from "react-router";
-
 const Cart = () => {
   const { cartItems, cartCount, removeFromCart, addToCart, user } =
     useContext(UserContext);
@@ -40,7 +39,7 @@ const Cart = () => {
                 </figure>
                 <div className="card-body">
                   <h2 className="card-title">{item.title}</h2>
-                  <p>{item.description}</p>
+
                   <h2 className="card-title">{item.price} KD</h2>
                   <div
                     className="flex flex-row items-center justify-center gap-1"
@@ -83,7 +82,7 @@ const Cart = () => {
                 type="button"
                 onClick={() => navigate(`/${user?.username}`)}
               >
-                Continue Shopping
+                Go Shopping
               </button>
             </div>
           </>

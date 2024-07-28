@@ -14,7 +14,16 @@ const ProductDetails = () => {
     queryKey: ["product"],
     queryFn: () => getProduct(productId),
   });
-
+  const handleBuyNow = (product) => {
+    // addToCart(product);
+    navigate(`/checkout`, {
+      state: {
+        productTitle: product.title,
+        productPrice: product.price,
+        productImage: BASE_URL + "/" + product.image,
+      },
+    });
+  };
   if (!product) {
     return (
       <div className="h-screen flex items-center justify-center">
@@ -71,7 +80,7 @@ const ProductDetails = () => {
               <button
                 className="btn btn-primary"
                 type="button"
-                onClick={() => navigate(`/checkout/${product._id}`)}
+                onClick={() => handleBuyNow(product)}
               >
                 Buy Now
               </button>
