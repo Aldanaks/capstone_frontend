@@ -14,6 +14,7 @@ module.exports = {
         "custom-blue": "#1E40AF",
         "custom-red": "#EF4444",
         "custom-color-button": "#403a58",
+        "custom-primary-button": "#fb543c",
         "custom-gray": "rgb(245, 245, 245)", // Use rgb format correctly
       },
     },

@@ -157,10 +157,9 @@ const CheckOut = () => {
   // };
 
   return (
-    <div className="mt-4">
+    <div className="bg-custom-gray h-m-sc w-full">
       <div className="mt-4">
-        {/* Other code */}
-        <ToastContainer /> {/* Add ToastContainer to your component */}
+        <ToastContainer />
       </div>
       <h2 className="text-2xl font-bold flex justify-center p-2">
         Total :

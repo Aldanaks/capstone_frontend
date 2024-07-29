@@ -52,7 +52,7 @@ const CreatorsLink = () => {
     <div className="flex flex-col items-center justify-center w-full lg:w-2/3 xl:w-1/2 mx-auto lg:mx-auto bg-custom-gray">
       <div className="w-full ">
         {creator && (
-          <div className="flex flex-row border rounded-full">
+          <div className="flex flex-row  rounded-full">
             <div className="p-2 w-[30%] flex justify-center items-center">
               <img
                 src={BASE_URL + "/" + creator.image}
@@ -62,11 +62,11 @@ const CreatorsLink = () => {
             </div>
             <div className="w-[70%] rounded-full">
               <h1 className="text-xl font-bold px-2 ">{creator.username}</h1>
-              <p className="text-lg px-2">{creator.bio} Bio</p>
-              <div className="flex space-x-4 m-4">
+              <p className="text-lg px-2">{creator.bio}</p>
+              <div className="flex space-x-4 px-2 py-2  ">
                 {creator?.snapchat && (
                   <a
-                    href={creator.snapchat}
+                    href={`https://${creator.snapchat}`}
                     target="_blank"
                     rel="noopener noreferrer"
                     className="text-yellow-600 hover:text-yellow-600"
@@ -76,7 +76,7 @@ const CreatorsLink = () => {
                 )}
                 {creator?.twitter && (
                   <a
-                    href={creator.twitter}
+                    href={`https://${creator.twitter}`}
                     target="_blank"
                     rel="noopener noreferrer"
                     className=" hover:text-black"
@@ -86,7 +86,7 @@ const CreatorsLink = () => {
                 )}
                 {creator?.instagram && (
                   <a
-                    href={creator.instagram}
+                    href={`https://${creator.instagram}`}
                     target="_blank"
                     rel="noopener noreferrer"
                     className="text-pink-500 hover:text-pink-700"
@@ -94,9 +94,10 @@ const CreatorsLink = () => {
                     <FaInstagram size={24} />
                   </a>
                 )}
+
                 {creator?.TikTok && (
                   <a
-                    href={creator.instagram}
+                    href={`https://${creator.TikTok}`}
                     target="_blank"
                     rel="noopener noreferrer"
                     className="hover:text-back"

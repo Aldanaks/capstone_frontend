@@ -2,6 +2,8 @@ import React, { useContext } from "react";
 import UserContext from "../context/UserContext";
 import { BASE_URL } from "../api";
 import { useNavigate } from "react-router";
+import AddtoCart from "../Materials/AddtoCart.png";
+
 const Cart = () => {
   const { cartItems, cartCount, removeFromCart, addToCart, user } =
     useContext(UserContext);
@@ -21,9 +23,9 @@ const Cart = () => {
   console.log(user.username);
 
   return (
-    <div className="h-screen flex items-center justify-center relative overflow-hidden">
+    <div className="h-screen flex items-center justify-center relative overflow-hidden bg-custom-gray">
       <div className="flex-col overflow-y-auto h-full w-full max-w-4xl m-10">
-        <h1 className="text-xl font-bold mt-4 mb-8">
+        <h1 className="text-xl font-bold mt-4 mb-8 flex items-center justify-center">
           {cartCount} items are in your cart
         </h1>
         {cartItems.length > 0 ? (
@@ -90,9 +92,7 @@ const Cart = () => {
           <div className="text-center m-10">
             <img
               className="h-[500px] rounded-3xl p-4 object-contain"
-              src={
-                "https://i.pinimg.com/564x/47/07/f4/4707f4138db3ff7930a081dc17974fd8.jpg"
-              }
+              src={AddtoCart}
               alt={"Your cart is empty"}
             />
             <h2 className="text-2xl font-bold">Your cart is empty</h2>

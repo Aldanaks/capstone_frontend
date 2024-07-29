@@ -11,7 +11,7 @@ import Receipt from "./pages/Receipt";
 import CustomerSupport from "./pages/CustomerSupport";
 import { loadStripe } from "@stripe/stripe-js";
 import { Elements } from "@stripe/react-stripe-js";
-
+import "./App.css";
 const stripePromise = loadStripe(
   "pk_test_51PgqytRtWWL31ZdbCxkYslRowxBNzcIQDGyc9UnwGt0LB9NZz47vybBXudbMOM2Svb2NNl8gI7BMRGFBstleOQkf00qt1iL1ii"
 );
