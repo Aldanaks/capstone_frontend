@@ -1,7 +1,7 @@
 import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
 import { useState } from "react";
 import { Route, Routes } from "react-router-dom";
-import Navbar from "./components/NavBar";
+import Navbar from "./components/Topbar";
 import { UserProvider } from "./context/UserContext";
 import Cart from "./pages/Cart";
 import CheckOut from "./pages/CheckOut";
