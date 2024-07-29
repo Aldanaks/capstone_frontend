@@ -52,21 +52,21 @@ const Navbar = () => {
               className="card card-compact dropdown-content bg-base-100 z-[1] mt-3 w-52 shadow"
             >
               <div className="card-body">
-                <span className="text-lg font-bold">{cartCount} Items</span>
-                <span className="text-info">
+                <span className="text-lg font-bold text-custom-color-button">
+                  {cartCount} Items
+                </span>
+                <span className=" text-custom-primary-button">
                   Subtotal: {getTotalPrice()} KD{" "}
                 </span>
-                <div className="card-actions flex justify-between p-0">
+                <div className="flex justify-between p-0">
                   <button className=" flex justify-start">
-                    <Link to="/cart" className="btn btn-primary">
+                    <Link
+                      to="/cart"
+                      className="btn text-white bg-custom-color-button"
+                    >
                       View Cart
                     </Link>
                   </button>
-                  {/* <button className="flex justify-end">
-                    <Link to="/checkout" className="btn btn-primary">
-                      CheckOut
-                    </Link>
-                  </button> */}
                 </div>
               </div>
             </div>

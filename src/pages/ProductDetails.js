@@ -74,7 +74,7 @@ const ProductDetails = () => {
               </svg>
             </button>
             <button
-              className="bg-purple-700 border rounded-3xl px-6 py-2 shadow-2xl text-white text-sm"
+              className="bg-custom-color-button border rounded-3xl px-6 py-2 shadow-2xl text-white text-sm"
               onClick={() => handleBuyNow(product)}
             >
               Buy Now
