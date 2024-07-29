@@ -2,6 +2,8 @@ import React, { useContext } from "react";
 import UserContext from "../context/UserContext";
 import { BASE_URL } from "../api";
 import { useNavigate } from "react-router";
+import AddtoCart from "../Materials/AddtoCart.png";
+
 const Cart = () => {
   const { cartItems, cartCount, removeFromCart, addToCart, user } =
     useContext(UserContext);
@@ -18,11 +20,13 @@ const Cart = () => {
     navigate(`/productdetails/${item._id}`);
   };
 
+  console.log(user.username);
+
   return (
-    <div className="h-screen flex items-center justify-center relative overflow-hidden">
+    <div className="h-screen flex items-center justify-center relative overflow-hidden bg-custom-gray">
       <div className="flex-col overflow-y-auto h-full w-full max-w-4xl m-10">
-        <h1 className="text-xl font-bold mt-4 mb-8">
-          Your cart currently contains {cartCount} items
+        <h1 className="text-xl font-bold mt-4 mb-8 flex items-center justify-center">
+          {cartCount} items are in your cart
         </h1>
         {cartItems.length > 0 ? (
           <>
@@ -76,19 +80,26 @@ const Cart = () => {
                 Check Out
               </button>
               <button
-                className="btn btn-primary text-white"
-                onClick={() => navigate(`/${user.username}`)}
+                className="btn btn-primary text-white ml-3"
+                type="button"
+                onClick={() => navigate(`/${user?.username}`)}
               >
                 Go Shopping
               </button>
             </div>
           </>
         ) : (
-          <div className="text-center mt-10">
+          <div className="text-center m-10">
+            <img
+              className="h-[500px] rounded-3xl p-4 object-contain"
+              src={AddtoCart}
+              alt={"Your cart is empty"}
+            />
             <h2 className="text-2xl font-bold">Your cart is empty</h2>
             <button
-              className="btn btn-primary text-white"
-              onClick={() => navigate(`/${user.username}`)}
+              className="bg-transparent text-black p-5"
+              type="button"
+              onClick={() => navigate(`/${user?.username}`)}
             >
               Start Shopping
             </button>

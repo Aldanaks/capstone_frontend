@@ -9,6 +9,12 @@ import CreatorsLink from "./pages/CreatorsLink";
 import CustomerSupport from "./pages/CustomerSupport";
 import ProductDetails from "./pages/ProductDetails";
 import Receipt from "./pages/Receipt";
+import { loadStripe } from "@stripe/stripe-js";
+import { Elements } from "@stripe/react-stripe-js";
+import "./App.css";
+const stripePromise = loadStripe(
+  "pk_test_51PgqytRtWWL31ZdbCxkYslRowxBNzcIQDGyc9UnwGt0LB9NZz47vybBXudbMOM2Svb2NNl8gI7BMRGFBstleOQkf00qt1iL1ii"
+);
 
 function App() {
   const [user, setUser] = useState();
@@ -19,15 +25,19 @@ function App() {
     <QueryClientProvider client={queryClient}>
       <UserProvider value={[user, setUser]}>
         <Navbar />
-        <Routes>
-          <Route path="/:creatorUsername" Component={CreatorsLink} />
-          <Route path="/cart" Component={Cart} />
-          <Route path="/CheckOut" Component={CheckOut} />
-          <Route path="/productdetails/:productId" Component={ProductDetails} />
-          <Route path="/receipt/:receiptId" Component={Receipt} />
-          <Route path="/customersupport" Component={CustomerSupport} />
-          <Route path="/creatorslink" Component={CreatorsLink} />
-        </Routes>
+        <Elements stripe={stripePromise}>
+          <Routes>
+            <Route path="/:creatorUsername" Component={CreatorsLink} />
+            <Route path="/cart" Component={Cart} />
+            <Route path="/CheckOut" Component={CheckOut} />
+            <Route
+              path="/productdetails/:productId"
+              Component={ProductDetails}
+            />
+            <Route path="/Receipt/:receiptId" Component={Receipt} />
+            <Route path="/customersupport" Component={CustomerSupport} />
+          </Routes>
+        </Elements>
       </UserProvider>
     </QueryClientProvider>
   );

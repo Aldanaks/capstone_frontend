@@ -10,7 +10,7 @@ const Navbar = () => {
     <div className="w-full bg-custom-gray shadow-lg">
       <div className="navbar ">
         <div className="flex-1">
-          <div className="btn btn-ghost text-xl text-custom-primary-button">
+          <a className="btn btn-ghost text-xl text-custom-primary-button">
             <button
               className=""
               type="button"
@@ -18,7 +18,7 @@ const Navbar = () => {
             >
               Fluid
             </button>
-          </div>
+          </a>
         </div>
         <div className="flex-none">
           <div className="dropdown dropdown-end">
