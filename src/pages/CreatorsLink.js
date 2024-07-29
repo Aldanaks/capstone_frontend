@@ -409,7 +409,6 @@ const CreatorsLink = () => {
   const navigate = useNavigate();
   const [expandedProductIds, setExpandedProductIds] = useState([]);
   const [searchTerm, setSearchTerm] = useState("");
-  const [priceRange, setPriceRange] = useState({ min: "", max: "" });
 
   const { data: creator } = useQuery({
     queryKey: ["getAllProductsByCreator", creatorUsername],

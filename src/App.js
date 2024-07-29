@@ -1,14 +1,14 @@
-import { Route, Routes, useNavigate } from "react-router-dom";
-import UserContext, { UserProvider } from "./context/UserContext";
-import { useEffect, useState } from "react";
 import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
-import Navbar from "./components/Navbar";
+import { useState } from "react";
+import { Route, Routes } from "react-router-dom";
+import Navbar from "./components/NavBar";
+import { UserProvider } from "./context/UserContext";
 import Cart from "./pages/Cart";
 import CheckOut from "./pages/CheckOut";
+import CreatorsLink from "./pages/CreatorsLink";
+import CustomerSupport from "./pages/CustomerSupport";
 import ProductDetails from "./pages/ProductDetails";
 import Receipt from "./pages/Receipt";
-import CustomerSupport from "./pages/CustomerSupport";
-import CreatorsLink from "./pages/CreatorsLink";
 
 function App() {
   const [user, setUser] = useState();
