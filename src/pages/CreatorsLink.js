@@ -4,16 +4,17 @@ import { getAllProductsByCreator } from "../api/auth";
 import { useParams, useNavigate } from "react-router-dom";
 import { BASE_URL } from "../api";
 import UserContext from "../context/UserContext";
-import { FaTwitter, FaInstagram, FaSnapchat } from "react-icons/fa";
+import { FaInstagram, FaSnapchat, FaTiktok } from "react-icons/fa";
+import { FaSquareXTwitter } from "react-icons/fa6";
 
 const CreatorsLink = () => {
   const { creatorUsername } = useParams();
-  const { addToCart, setUser } = useContext(UserContext);
+  const { addToCart, setUser, isInCart } = useContext(UserContext);
   const [searchTerm, setSearchTerm] = useState("");
 
   const navigate = useNavigate();
-  // const [expandedProductIds, setExpandedProductIds] = useState([]);
-  const [isGridView, setIsGridView] = useState(true); // State for grid/list view
+
+  const [isGridView, setIsGridView] = useState(false);
 
   const { data: creator } = useQuery({
     queryKey: ["getAllProductsByCreator", creatorUsername],
@@ -28,6 +29,7 @@ const CreatorsLink = () => {
     console.log(product);
     navigate(`/productdetails/${product._id}`);
   };
+
   const handleBuyNow = (product) => {
     addToCart(product);
     navigate(`/checkout`, {
@@ -38,13 +40,7 @@ const CreatorsLink = () => {
       },
     });
   };
-  //  Filter and sort the products based on search term
-  // const filteredProducts =
-  //   creator?.products
-  //     ?.filter((product) =>
-  //       product.title.toLowerCase().includes(searchTerm.toLowerCase())
-  //     )
-  //     .sort((a, b) => b.title.localeCompare(a.title)) || [];
+
   const filteredProducts =
     creator?.products
       ?.filter((product) =>
@@ -53,51 +49,71 @@ const CreatorsLink = () => {
       .sort((a, b) => b.title?.localeCompare(a.title)) || [];
 
   return (
-    <div className="flex flex-col items-center justify-center w-full lg:w-2/3 xl:w-1/2 mx-auto lg:mx-auto">
-      <div className="w-full">
+    <div className="flex flex-col items-center justify-center w-full lg:w-2/3 xl:w-1/2 mx-auto lg:mx-auto bg-custom-gray">
+      <div className="w-full ">
         {creator && (
-          <div className="flex flex-col items-center m-4">
-            <img
-              src={BASE_URL + "/" + creator.image}
-              alt=""
-              className="w-32 h-32 rounded-full border border-purple-500"
-            />
-            <h1 className="text-3xl font-bold m-2">{creator.username}</h1>
-            <p className="text-lg text-center m-2">{creator.bio}</p>
-            {/* Social Media Icons */}
-            <div className="flex space-x-4 m-4">
-              {creator?.snapchat && (
-                <a
-                  href={creator.snapchat}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="text-yellow-600 hover:text-yellow-600"
-                >
-                  <FaSnapchat size={24} />
-                </a>
-              )}
-              {creator?.twitter && (
-                <a
-                  href={creator.twitter}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="text-blue-400 hover:text-blue-600"
-                >
-                  <FaTwitter size={24} />
-                </a>
-              )}
-              {creator?.instagram && (
-                <a
-                  href={creator.instagram}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="text-pink-500 hover:text-pink-700"
-                >
-                  <FaInstagram size={24} />
-                </a>
-              )}
+          <div className="flex flex-row  rounded-full">
+            <div className="p-2 w-[30%] flex justify-center items-center">
+              <img
+                src={BASE_URL + "/" + creator.image}
+                alt=""
+                className="w-20 h-20 rounded-full border border-purple-500"
+              />
             </div>
-            <label className="input input-bordered flex items-center gap-2">
+            <div className="w-[70%] rounded-full">
+              <h1 className="text-xl font-bold px-2 ">{creator.username}</h1>
+              <p className="text-lg px-2">{creator.bio}</p>
+              <div className="flex space-x-4 px-2 py-2  ">
+                {creator?.snapchat && (
+                  <a
+                    href={`https://${creator.snapchat}`}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="text-yellow-600 hover:text-yellow-600"
+                  >
+                    <FaSnapchat size={24} />
+                  </a>
+                )}
+                {creator?.twitter && (
+                  <a
+                    href={`https://${creator.twitter}`}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className=" hover:text-black"
+                  >
+                    <FaSquareXTwitter size={24} />
+                  </a>
+                )}
+                {creator?.instagram && (
+                  <a
+                    href={`https://${creator.instagram}`}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="text-pink-500 hover:text-pink-700"
+                  >
+                    <FaInstagram size={24} />
+                  </a>
+                )}
+
+                {creator?.TikTok && (
+                  <a
+                    href={`https://${creator.TikTok}`}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="hover:text-back"
+                  >
+                    <FaTiktok size={24} />
+                  </a>
+                )}
+              </div>
+            </div>
+          </div>
+        )}
+
+        {/* Toggle View Buttons */}
+        <div className="flex justify-center items-center  w-[85%] ml-auto mr-auto gap-1">
+          <div className="flex items-center  w-full">
+            <label className="input input-bordered flex items-center rounded-[12px]  w-full ">
               <input
                 type="text"
                 className="grow"
@@ -109,7 +125,7 @@ const CreatorsLink = () => {
                 xmlns="http://www.w3.org/2000/svg"
                 viewBox="0 0 16 16"
                 fill="currentColor"
-                className="h-4 w-4 opacity-70"
+                className="h-4 w-4 opacity-100 text-black"
               >
                 <path
                   fillRule="evenodd"
@@ -119,14 +135,10 @@ const CreatorsLink = () => {
               </svg>
             </label>
           </div>
-        )}
-
-        {/* Toggle View Buttons */}
-        <div className="flex justify-end mb-4">
-          <div className="bg-gray-200 text-sm text-gray-500 leading-none border-2 border-gray-200 rounded-full inline-flex">
+          <div className="flex items-center space-x-2">
             <button
-              className={`inline-flex items-center justify-center w-10 h-10 transition-colors duration-300 ease-in focus:outline-none ${
-                isGridView ? "active" : ""
+              className={`flex items-center justify-center w-10 h-10 transition-colors duration-300 ease-in focus:outline ${
+                isGridView ? "active bg-gray-200" : "bg-transparent"
               }`}
               onClick={() => setIsGridView(true)}
             >
@@ -148,9 +160,12 @@ const CreatorsLink = () => {
                 <rect x="3" y="14" width="7" height="7"></rect>
               </svg>
             </button>
+
+            <div className="bg-gray-300 w-px h-6"></div>
+
             <button
-              className={`inline-flex items-center justify-center w-10 h-10 transition-colors duration-300 ease-in focus:outline-none ${
-                !isGridView ? "active" : ""
+              className={`flex items-center justify-center w-10 h-10 transition-colors duration-300 ease-in focus:outline-none ${
+                !isGridView ? "active bg-gray-200" : "bg-transparent"
               }`}
               onClick={() => setIsGridView(false)}
             >
@@ -179,71 +194,89 @@ const CreatorsLink = () => {
 
         {/* Display Products */}
         <div
-          className={`pb-96 w-full ${
-            isGridView ? "grid grid-cols-2 gap-2" : "flex flex-col"
+          className={`pb-80 w-[85%] ${
+            isGridView
+              ? "flex flex-row gap-3  ml-auto mr-auto justify-between flex-wrap "
+              : "flex flex-col items-center ml-auto mr-auto"
           }`}
         >
           {filteredProducts.map((product) => (
             <div
-              key={product.id}
-              className={`card bg-base-100 shadow-xl mb-3 cursor-pointer ${
-                isGridView ? "" : "w-full"
+              key={product._id}
+              className={`flex justify-center     ${
+                isGridView ? "w-[48%]" : "w-full"
               }`}
-              onClick={() => handleCardClick(product)}
             >
-              <img src={BASE_URL + "/" + product.image} alt={product.title} />
-              <div className="card-body">
-                <h2 className="card-title">{product.title}</h2>
-                {/* <p
-                  className={
-                    expandedProductIds.includes(product.id)
-                      ? ""
-                      : "truncate-text"
-                  }
-                >
-                  {product.description}
-                </p> */}
-                {/* <button
-                  onClick={(e) => {
-                    e.stopPropagation();
-                    toggleDescription(product.id);
-                  }}
-                >
-                  {expandedProductIds.includes(product.id)
-                    ? "Show Less"
-                    : "Show More"}
-                </button> */}
-                <h2 className="card-title">{product.price} KD</h2>
+              <div
+                className={`bg-base-100 shadow-2xl cursor-pointer  mt-8 border rounded-[30px] ${
+                  isGridView
+                    ? "w-[100%] lg:w-[200px] flex flex-col "
+                    : "w-[100%] flex flex-row justify-center items-center"
+                }`}
+                onClick={() => handleCardClick(product)}
+              >
+                {/* IMAGE */}
                 <div
-                  className="card-actions justify-end"
-                  onClick={(e) => e.stopPropagation()}
+                  className={`  ${
+                    isGridView
+                      ? "aspect-square h-[200px]  p-5"
+                      : "h-full w-[300px]  p-5"
+                  }`}
                 >
-                  <button
-                    className="btn btn-primary"
-                    onClick={() => addToCart(product)}
+                  <img
+                    className="h-full w-full rounded-[22px]  object-cover "
+                    src={BASE_URL + "/" + product.image}
+                    alt={product.title}
+                  />
+                </div>
+                {/* CONTENT */}
+                <div className="w-full  p-5 flex flex-col justify-between">
+                  <h2 className="mb-8  font-bold ">{product.title}</h2>
+
+                  <div
+                    className="flex flex-col justify-between gap-1  items-center "
+                    onClick={(e) => e.stopPropagation()}
                   >
-                    <svg
-                      xmlns="http://www.w3.org/2000/svg"
-                      className="h-5 w-5"
-                      fill="none"
-                      viewBox="0 0 24 24"
-                      stroke="currentColor"
-                    >
-                      <path
-                        strokeLinecap="round"
-                        strokeLinejoin="round"
-                        strokeWidth="2"
-                        d="M3 3h2l.4 2M7 13h10l4-8H5.4M7 13L5.4 5M7 13l-2.293 2.293c-.63.63-.184 1.707.707 1.707H17m0 0a2 2 0 100 4 2 2 0 000-4zm-8 2a2 2 0 11-4 0 2 2 0 014 0z"
-                      />
-                    </svg>
-                  </button>
-                  <button
-                    className="btn btn-primary"
-                    type="button"
-                    onClick={() => handleBuyNow(product)}
-                  >
-                    Buy Now
-                  </button>
+                    <h2 className="flex items-center  mr-auto gap-1">
+                      <span>{product.price} </span> <span> KD</span>
+                    </h2>
+                    <div className="flex items-center mr-auto flex-row-reverse ">
+                      <button
+                        className={`flex flex-row py-2 px-2 rounded-full ${
+                          isInCart(product._id)
+                            ? "border-green-500 "
+                            : "bg-transparent"
+                        }`}
+                        onClick={() => addToCart(product)}
+                      >
+                        <svg
+                          xmlns="http://www.w3.org/2000/svg"
+                          className="h-5 w-5"
+                          fill="none"
+                          viewBox="0 0 24 24"
+                          stroke={`${
+                            isInCart(product._id) ? "#7e22ce" : "#000000"
+                          }`}
+                        >
+                          <path
+                            strokeLinecap="round"
+                            strokeLinejoin="round"
+                            strokeWidth={isInCart(product._id) ? "3" : "2"}
+                            d="M3 3h2l.4 2M7 13h10l4-8H5.4M7 13L5.4 5M7 13l-2.293 2.293c-.63.63-.184 1.707.707 1.707H17m0 0a2 2 0 100 4 2 2 0 000-4zm-8 2a2 2 0 11-4 0 2 2 0 014 0z"
+                          />
+                        </svg>
+                      </button>
+                      <div>
+                        <button
+                          className="bg-custom-color-button border rounded-3xl px-6 py-2 shadow-2xl text-gray-100 text-sm"
+                          type="button"
+                          onClick={() => handleBuyNow(product)}
+                        >
+                          Buy
+                        </button>
+                      </div>
+                    </div>
+                  </div>
                 </div>
               </div>
             </div>

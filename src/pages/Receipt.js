@@ -44,12 +44,12 @@ const Receipt = () => {
           <p className="text-lg mb-10">
             We appreciate your business and hope you enjoy your purchase.
           </p>
-          <button
+          {/* <button
             className="btn btn-primary text-white"
             onClick={() => navigate(`/${receipt.creatorId}`)}
           >
             Go Back to Shopping
-          </button>
+          </button> */}
           <div className="w-full flex justify-center mt-9">
             <button onClick={() => navigate(`/customersupport`)}>
               <h4 className="text-m text-gray-500 flex justify-start">

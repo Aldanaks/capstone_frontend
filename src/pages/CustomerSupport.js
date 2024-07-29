@@ -6,7 +6,7 @@ const Modal = ({ isOpen, onClose }) => {
 
   return (
     <div className="fixed inset-0 bg-gray-600 bg-opacity-50 flex items-center justify-center">
-      <div className="bg-white p-6 rounded-lg shadow-lg max-w-sm w-full">
+      <div className="bg-white rounded-lg p-6 shadow-lg max-w-sm w-full">
         <h2 className="text-lg font-bold mb-4">Thank You!</h2>
         <p className="mb-4">Our team will contact you shortly.</p>
         <div className="flex justify-end">
@@ -39,8 +39,8 @@ const CustomerSupport = () => {
   };
 
   return (
-    <div className="h-screen flex items-center justify-center bg-gray-100">
-      <div className="bg-white p-8 rounded-lg shadow-lg max-w-md w-full">
+    <div className="h-screen flex justify-center bg-gray-100">
+      <div className="bg-white p-10 rounded-lg shadow-lg max-w-md w-full">
         <h1 className="text-2xl font-bold mb-4">Customer Support</h1>
         <p className="mb-6">
           If you have any questions or need assistance, please fill out the form
