@@ -1,4 +1,3 @@
-// src/pages/CheckOut.jsx
 import React, { useContext, useState } from "react";
 import { useLocation, useNavigate } from "react-router";
 import UserContext from "../context/UserContext";
@@ -6,6 +5,8 @@ import { createPaymentIntent } from "../api/stripe";
 import { CardElement, useStripe, useElements } from "@stripe/react-stripe-js";
 import { useMutation } from "@tanstack/react-query";
 import { createReceipt } from "../api/receipt";
+import { ToastContainer, toast } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
 
 const CheckOut = () => {
   const { cartItems, user } = useContext(UserContext);
@@ -14,8 +15,8 @@ const CheckOut = () => {
 
   const { productTitle, productPrice, productImage } = location.state || {};
 
-  // State variables for user input
   const [email, setEmail] = useState("");
+  const [confirmEmail, setconfirmEmail] = useState("");
   const [name, setName] = useState("");
 
   const getTotalPrice = () => {
@@ -41,6 +42,7 @@ const CheckOut = () => {
         creator: user._id,
         products: cartItems.map((item) => item.id),
         customerEmail: email,
+        confirmEmail,
         customerName: name,
       };
 
@@ -68,6 +70,10 @@ const CheckOut = () => {
     event.preventDefault();
     if (!stripe || !elements) return;
 
+    if (email !== confirmEmail) {
+      toast.error("Emails do not match");
+      return;
+    }
     setPaymentProcessing(true);
 
     try {
@@ -88,20 +94,74 @@ const CheckOut = () => {
 
       if (result.error) {
         console.log(result.error.message);
+        toast.error(result.error.message);
       } else {
         if (result.paymentIntent.status === "succeeded") {
-          navigate("/receipt");
+          toast.success("Payment succeeded!");
+          handlePayment();
+          // navigate("/receipt");
         }
       }
     } catch (error) {
       console.error("Payment failed:", error);
+      toast.error("Payment failed: " + error.message);
     } finally {
       setPaymentProcessing(false);
     }
   };
 
+  // const handleSubmit = async (event) => {
+  //   event.preventDefault();
+  //   if (!stripe || !elements) return;
+
+  //   if (email !== confirmEmail) {
+  //     toast.error("Emails do not match");
+  //     return;
+  //   }
+
+  //   setPaymentProcessing(true);
+
+  //   try {
+  //     const totalPrice = getTotalPrice();
+  //     const clientSecret = await createPaymentIntent(
+  //       Math.ceil(totalPrice * 100)
+  //     );
+
+  //     const result = await stripe.confirmCardPayment(clientSecret, {
+  //       payment_method: {
+  //         card: elements.getElement(CardElement),
+  //         billing_details: {
+  //           email,
+  //           name,
+  //         },
+  //       },
+  //     });
+
+  //     if (result.error) {
+  //       console.log(result.error.message);
+  //       toast.error(result.error.message);
+  //     } else {
+  //       if (result.paymentIntent.status === "succeeded") {
+  //         // Call handlePayment here to process the receipt after payment success
+  //         handlePayment();
+  //         toast.success("Payment succeeded!");
+  //         // You may want to navigate inside handlePayment or after a successful toast
+  //       }
+  //     }
+  //   } catch (error) {
+  //     console.error("Payment failed:", error);
+  //     toast.error("Payment failed: " + error.message);
+  //   } finally {
+  //     setPaymentProcessing(false);
+  //   }
+  // };
+
   return (
     <div className="mt-4">
+      <div className="mt-4">
+        {/* Other code */}
+        <ToastContainer /> {/* Add ToastContainer to your component */}
+      </div>
       <h2 className="text-2xl font-bold flex justify-center p-2">
         Total :
         <h3 className="text-2xl font-bold px-1 text-green-500">
@@ -134,6 +194,15 @@ const CheckOut = () => {
           </label>
           <label className="input input-bordered flex items-center gap-2 w-full mb-4">
             <input
+              type="email"
+              className="grow p-2"
+              placeholder="Please confirm your Email"
+              value={confirmEmail}
+              onChange={(e) => setconfirmEmail(e.target.value)}
+            />
+          </label>
+          <label className="input input-bordered flex items-center gap-2 w-full mb-4">
+            <input
               type="text"
               className="grow p-2"
               placeholder="Name on card"
@@ -144,7 +213,6 @@ const CheckOut = () => {
           <CardElement className="grow p-2 w-full mb-4 border border-gray-300 rounded-lg  " />
           <div className="flex flex-col justify-end w-full">
             <h1 className="text-sm text-gray-400 mb-2">
-              {" "}
               This payment is processed through Stripe
             </h1>
 

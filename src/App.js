@@ -34,7 +34,7 @@ function App() {
               path="/productdetails/:productId"
               Component={ProductDetails}
             />
-            <Route path="/Receipt" Component={Receipt} />
+            <Route path="/Receipt/:receiptId" Component={Receipt} />
             <Route path="/customersupport" Component={CustomerSupport} />
           </Routes>
         </Elements>

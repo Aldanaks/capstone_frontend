@@ -25,6 +25,10 @@ export const UserProvider = ({ children }) => {
     setCartCount((prevCount) => prevCount + 1);
   };
 
+  const isInCart = (productId) => {
+    return cartItems.some((item) => item._id === productId);
+  };
+
   const removeFromCart = (product) => {
     let countChange = 0;
 
@@ -64,6 +68,7 @@ export const UserProvider = ({ children }) => {
         addToCart,
         removeFromCart,
         getTotalPrice,
+        isInCart,
       }}
     >
       {children}

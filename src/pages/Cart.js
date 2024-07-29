@@ -24,7 +24,7 @@ const Cart = () => {
     <div className="h-screen flex items-center justify-center relative overflow-hidden">
       <div className="flex-col overflow-y-auto h-full w-full max-w-4xl m-10">
         <h1 className="text-xl font-bold mt-4 mb-8">
-          Your cart currently contains {cartCount} items
+          {cartCount} items are in your cart
         </h1>
         {cartItems.length > 0 ? (
           <>
@@ -88,9 +88,16 @@ const Cart = () => {
           </>
         ) : (
           <div className="text-center m-10">
+            <img
+              className="h-[500px] rounded-3xl p-4 object-contain"
+              src={
+                "https://i.pinimg.com/564x/47/07/f4/4707f4138db3ff7930a081dc17974fd8.jpg"
+              }
+              alt={"Your cart is empty"}
+            />
             <h2 className="text-2xl font-bold">Your cart is empty</h2>
             <button
-              className="btn btn-primary text-white m-3"
+              className="bg-transparent text-black p-5"
               type="button"
               onClick={() => navigate(`/${user?.username}`)}
             >
