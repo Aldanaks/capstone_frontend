@@ -57,7 +57,7 @@ const CreatorsLink = () => {
               <img
                 src={BASE_URL + "/" + creator.image}
                 alt=""
-                className="w-20 h-20 rounded-full border border-purple-500"
+                className="w-20 h-20 rounded-full border border-custom-primary-button"
               />
             </div>
             <div className="w-[70%] rounded-full">
@@ -208,7 +208,7 @@ const CreatorsLink = () => {
               }`}
             >
               <div
-                className={`bg-base-100 shadow-2xl cursor-pointer  mt-8 border rounded-[30px] ${
+                className={`bg-base-100 shadow-2xl cursor-pointer mt-8 border rounded-[30px] ${
                   isGridView
                     ? "w-[100%] lg:w-[200px] flex flex-col "
                     : "w-[100%] flex flex-row justify-center items-center"
@@ -230,17 +230,17 @@ const CreatorsLink = () => {
                   />
                 </div>
                 {/* CONTENT */}
-                <div className="w-full  p-5 flex flex-col justify-between">
-                  <h2 className="mb-8  font-bold ">{product.title}</h2>
+                <div className="w-full p-5 flex flex-col justify-between">
+                  <h2 className="mb-8 font-bold ">{product.title}</h2>
 
                   <div
-                    className="flex flex-col justify-between gap-1  items-center "
+                    className="flex flex-col justify-between gap-1 items-center "
                     onClick={(e) => e.stopPropagation()}
                   >
                     <h2 className="flex items-center  mr-auto gap-1">
                       <span>{product.price} </span> <span> KD</span>
                     </h2>
-                    <div className="flex items-center mr-auto flex-row-reverse ">
+                    <div className="flex items-center mr-auto flex-row-reverse">
                       <button
                         className={`flex flex-row py-2 px-2 rounded-full ${
                           isInCart(product._id)

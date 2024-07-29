@@ -57,15 +57,6 @@ const CheckOut = () => {
 
   const [paymentProcessing, setPaymentProcessing] = useState(false);
 
-  // const getTotalPrice = () => {
-  //   console.log(cartItems); // Log the cart items for debugging
-  //   return cartItems.reduce((total, item) => {
-  //     const price = parseFloat(item.price);
-  //     console.log(`Item price: ${price}`); // Log each item price for debugging
-  //     return total + (isNaN(price) ? 0 : price);
-  //   }, 0);
-  // };
-
   const handleSubmit = async (event) => {
     event.preventDefault();
     if (!stripe || !elements) return;
@@ -110,58 +101,12 @@ const CheckOut = () => {
     }
   };
 
-  // const handleSubmit = async (event) => {
-  //   event.preventDefault();
-  //   if (!stripe || !elements) return;
-
-  //   if (email !== confirmEmail) {
-  //     toast.error("Emails do not match");
-  //     return;
-  //   }
-
-  //   setPaymentProcessing(true);
-
-  //   try {
-  //     const totalPrice = getTotalPrice();
-  //     const clientSecret = await createPaymentIntent(
-  //       Math.ceil(totalPrice * 100)
-  //     );
-
-  //     const result = await stripe.confirmCardPayment(clientSecret, {
-  //       payment_method: {
-  //         card: elements.getElement(CardElement),
-  //         billing_details: {
-  //           email,
-  //           name,
-  //         },
-  //       },
-  //     });
-
-  //     if (result.error) {
-  //       console.log(result.error.message);
-  //       toast.error(result.error.message);
-  //     } else {
-  //       if (result.paymentIntent.status === "succeeded") {
-  //         // Call handlePayment here to process the receipt after payment success
-  //         handlePayment();
-  //         toast.success("Payment succeeded!");
-  //         // You may want to navigate inside handlePayment or after a successful toast
-  //       }
-  //     }
-  //   } catch (error) {
-  //     console.error("Payment failed:", error);
-  //     toast.error("Payment failed: " + error.message);
-  //   } finally {
-  //     setPaymentProcessing(false);
-  //   }
-  // };
-
   return (
-    <div className="bg-custom-gray h-m-sc w-full">
+    <div className="bg-custom-gray h-full ">
       <div className="mt-4">
         <ToastContainer />
       </div>
-      <h2 className="text-2xl font-bold flex justify-center p-2">
+      <h2 className="text-2xl font-bold flex justify-end p-2">
         Total :
         <h3 className="text-2xl font-bold px-1 text-green-500">
           {getTotalPrice()} KD
@@ -169,14 +114,18 @@ const CheckOut = () => {
       </h2>
 
       {productTitle && (
-        <div className="product-details mb-4 p-4 border border-gray-300 rounded">
-          <h3 className="text-xl font-semibold">{productTitle}</h3>
-          <img
-            src={productImage}
-            alt={productTitle}
-            className="w-32 h-32 object-cover mb-2"
-          />
-          <h4 className="text-lg font-bold">Price: {productPrice} KD</h4>
+        <div className="flex flex-row">
+          <div className="p-2 w-[30%] flex justify-center items-center">
+            <img
+              src={productImage}
+              alt=""
+              className="w-20 h-20 border-custom-primary-button"
+            />
+          </div>
+          <div className="w-[70%] rounded-full">
+            <h1 className="text-xl text-bold px-2 ">{productTitle}</h1>
+            <p className="text-lg px-2">Price: {productPrice} KD</p>
+          </div>
         </div>
       )}
 
@@ -216,7 +165,7 @@ const CheckOut = () => {
             </h1>
 
             <button
-              className="btn btn-primary mb-4 text-white "
+              className="btn bg-custom-primary-button mb-4 text-white "
               type="submit"
               disabled={!stripe || paymentProcessing}
             >
@@ -224,7 +173,7 @@ const CheckOut = () => {
             </button>
           </div>
         </form>
-        <div className="w-full flex justify-center mt-9">
+        <div className="w-full flex justify-center mt-3">
           <button
             onClick={() => navigate(`/customersupport`)}
             className="btn text-white"
