@@ -7,8 +7,8 @@ const Navbar = () => {
   const navigate = useNavigate();
 
   return (
-    <div className="w-full bg-custom-gray shadow-lg">
-      <div className="navbar ">
+    <div className=" w-full bg-custom-gray shadow-lg sticky top-0">
+      <div className="navbar">
         <div className="flex-1">
           <a className="btn btn-ghost text-xl text-custom-primary-button">
             <button
@@ -16,7 +16,7 @@ const Navbar = () => {
               type="button"
               onClick={() => navigate(`/${user?.username}`)}
             >
-              Fluid
+              {user?.username}
             </button>
           </a>
         </div>

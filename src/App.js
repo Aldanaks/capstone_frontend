@@ -1,6 +1,6 @@
-import { Route, Routes, useNavigate } from "react-router-dom";
-import UserContext, { UserProvider } from "./context/UserContext";
-import { useEffect, useState } from "react";
+import { Route, Routes } from "react-router-dom";
+import { UserProvider } from "./context/UserContext";
+import { useState } from "react";
 import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
 import Navbar from "./components/NavBar";
 import CreatorsLink from "./pages/CreatorsLink";
@@ -12,6 +12,7 @@ import CustomerSupport from "./pages/CustomerSupport";
 import { loadStripe } from "@stripe/stripe-js";
 import { Elements } from "@stripe/react-stripe-js";
 import "./App.css";
+import Footer from "./components/Footer";
 const stripePromise = loadStripe(
   "pk_test_51PgqytRtWWL31ZdbCxkYslRowxBNzcIQDGyc9UnwGt0LB9NZz47vybBXudbMOM2Svb2NNl8gI7BMRGFBstleOQkf00qt1iL1ii"
 );
@@ -38,6 +39,7 @@ function App() {
             <Route path="/customersupport" Component={CustomerSupport} />
           </Routes>
         </Elements>
+        <Footer />
       </UserProvider>
     </QueryClientProvider>
   );

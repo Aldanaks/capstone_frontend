@@ -30,42 +30,6 @@ const Cart = () => {
         </h1>
         {cartItems.length > 0 ? (
           <>
-            {/* {cartItems.map((item) => (
-              <div
-                key={item.id}
-                className="card card-compact bg-base-100 w-full shadow-xl mb-3 cursor-pointer"
-                onClick={() => handleCardClick(item)}
-              >
-                <figure>
-                  <img src={BASE_URL + "/" + item.image} alt={item.title} />
-                </figure>
-                <div className="card-body">
-                  <h2 className="card-title">{item.title}</h2>
-
-                  <h2 className="card-title">{item.price} KD</h2>
-                  <div
-                    className="flex flex-row items-center justify-center gap-1"
-                    onClick={(e) => e.stopPropagation()}
-                  >
-                    <button
-                      className="btn bg-custom-primary-button text-white"
-                      onClick={() => removeFromCart(item)}
-                    >
-                      -
-                    </button>
-                    <div className="btn bg-custom-primary-button text-white px-6">
-                      {item.cartCount}
-                    </div>
-                    <button
-                      className="btn bg-custom-primary-button text-white"
-                      onClick={() => addToCart(item)}
-                    >
-                      +
-                    </button>
-                  </div>
-                </div>
-              </div>
-            ))} */}
             {cartItems.map((item) => (
               <div
                 key={item.id}
@@ -89,7 +53,7 @@ const Cart = () => {
                     onClick={(e) => e.stopPropagation()}
                   >
                     <button
-                      className="btn btn-sm bg-custom-color-button text-white"
+                      className="btn btn-sm bg-custom-primary-button text-white"
                       onClick={() => removeFromCart(item)}
                     >
                       -
