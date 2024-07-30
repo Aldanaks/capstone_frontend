@@ -20,45 +20,46 @@ const Receipt = () => {
   if (!receipt) {
     return <div>Receipt not found</div>;
   }
+
   return (
-    <div className=" flex justify-center p-20 bg-red-800 ">
-      <div className="h-screen flex items-center justify-center bg-gray-100">
-        <div className="text-center bg-white p-10 rounded-lg shadow-lg h-full">
-          <h1 className="text-xl font-bold flex mb-10">
-            <button className="border bg-green-600 w-20 h-10 flex flex-row justify-start rounded-[100%]"></button>
-            Thank You for Your Purchase!
-            <h1 className="text-3xl font-bold p-4 text-blue-800">
-              {receipt.creator.username}
-            </h1>
-          </h1>
-          <h2 className="text-2xl font-bold flex justify-center mb-10">
-            Total: {receipt.totalAmount} KD
-          </h2>
-          <button className="border bg-red-500 w-20 h-10 flex justify-start rounded-full "></button>
-          <h1 className="text-3xl font-bold p-4 text-blue-800">
-            {receipt.customerName}
-          </h1>
-
-          <h1 className="text-3xl font-bold p-4 text-blue-800">
-            {receipt.customerEmail}
-          </h1>
-
-          <p className="text-lg mb-10">
-            We appreciate your business and hope you enjoy your purchase.
+    <div className="min-h-[94vh] flex flex-col justify-center items-center text-gray-800">
+      <div className="w-full max-w-md bg-white p-8 rounded-lg shadow-lg">
+        <h1 className="text-2xl font-bold mb-4">Customer Receipt</h1>
+        <div className="mb-6">
+          <p className="text-lg">
+            Thank you for buying from {receipt.creator.continent} creator{" "}
+            {receipt.creator.username}
           </p>
-          {/* <button
-            className="btn btn-primary text-white"
-            onClick={() => navigate(`/${receipt.creatorId}`)}
-          >
-            Go Back to Shopping
-          </button> */}
-          <div className="w-full flex justify-center mt-9">
-            <button onClick={() => navigate(`/customersupport`)}>
-              <h4 className="text-m text-gray-500 flex justify-start">
-                Contact Us
-              </h4>
-            </button>
-          </div>
+        </div>
+        <div className="mb-6">
+          <p className="text-lg font-semibold">Order #</p>
+          <p className="text-lg">{receiptId}</p>
+        </div>
+        <div className="mb-6">
+          <p className="text-lg font-semibold">Name</p>
+          <p className="text-lg">{receipt.customerName}</p>
+        </div>
+        <div className="mb-6">
+          <p className="text-lg font-semibold">Email</p>
+          <p className="text-lg">{receipt.customerEmail}</p>
+        </div>
+
+        <div className="flex justify-between items-center border-t border-gray-200 pt-6">
+          <p className="text-lg font-semibold">Total</p>
+          <p className="text-2xl font-bold text-custom-primary-button">
+            ${receipt.totalAmount}
+          </p>
+        </div>
+        <button
+          className="w-full bg-custom-color-button text-white py-2 mt-8 rounded-lg"
+          onClick={() => navigate(`/${receipt.creatorId}`)}
+        >
+          Go Back to Shopping
+        </button>
+        <div className="w-full flex justify-center mt-4">
+          <button onClick={() => navigate(`/customersupport`)}>
+            <h4 className="text-m text-gray-500">Contact Us</h4>
+          </button>
         </div>
       </div>
     </div>
