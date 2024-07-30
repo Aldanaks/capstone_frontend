@@ -1,14 +1,15 @@
-import { Route, Routes } from "react-router-dom";
-import { UserProvider } from "./context/UserContext";
-import { useState } from "react";
+
 import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
-import Navbar from "./components/NavBar";
-import CreatorsLink from "./pages/CreatorsLink";
+import { useState } from "react";
+import { Route, Routes } from "react-router-dom";
+import Navbar from "./components/Topbar";
+import { UserProvider } from "./context/UserContext";
 import Cart from "./pages/Cart";
 import CheckOut from "./pages/CheckOut";
+import CreatorsLink from "./pages/CreatorsLink";
+import CustomerSupport from "./pages/CustomerSupport";
 import ProductDetails from "./pages/ProductDetails";
 import Receipt from "./pages/Receipt";
-import CustomerSupport from "./pages/CustomerSupport";
 import { loadStripe } from "@stripe/stripe-js";
 import { Elements } from "@stripe/react-stripe-js";
 import "./App.css";

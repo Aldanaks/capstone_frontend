@@ -1,14 +1,14 @@
 import axios from "axios";
-import { getToken } from "./storage";
+// import { getToken } from "./storage";
 
-const BASE_URL = "http://localhost:8001";
+const BASE_URL = "https://fluid-backend.turguta.com";
 
 const instance = axios.create({
   baseURL: BASE_URL,
 });
 
 instance.interceptors.request.use((config) => {
-  const token = getToken();
+  // const token = getToken();
   // if (token) {
   //   config.headers.Authorization = `Bearer ${token}`;
   // }
