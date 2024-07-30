@@ -27,8 +27,10 @@ const Receipt = () => {
         <h1 className="text-2xl font-bold mb-4">Customer Receipt</h1>
         <div className="mb-6">
           <p className="text-lg">
-            Thank you for buying from {receipt?.creator?.continent} creator{" "}
-            {receipt?.creator?.username}
+            Thank you for buying from {receipt?.creator?.continent}
+            <p className=" font-bold text-custom-primary-button justify-end ">
+              {receipt?.creator?.username}
+            </p>
           </p>
         </div>
         <div className="mb-6">
@@ -47,7 +49,7 @@ const Receipt = () => {
         <div className="flex justify-between items-center border-t border-gray-200 pt-6">
           <p className="text-lg font-semibold">Total</p>
           <p className="text-2xl font-bold text-custom-primary-button">
-            ${receipt?.totalAmount}
+            {receipt?.totalAmount} KD
           </p>
         </div>
         <button
