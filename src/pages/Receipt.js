@@ -21,11 +21,12 @@ const Receipt = () => {
     return <div>Receipt not found</div>;
   }
   return (
-    <div className="artboard flex justify-center p-10">
+    <div className=" flex justify-center p-20 bg-red-800 ">
       <div className="h-screen flex items-center justify-center bg-gray-100">
         <div className="text-center bg-white p-10 rounded-lg shadow-lg h-full">
-          <h1 className="text-xl font-bold mb-10">
-            Thank You for Your Purchase! from
+          <h1 className="text-xl font-bold flex mb-10">
+            <button className="border bg-green-600 w-20 h-10 flex flex-row justify-start rounded-[100%]"></button>
+            Thank You for Your Purchase!
             <h1 className="text-3xl font-bold p-4 text-blue-800">
               {receipt.creator.username}
             </h1>
@@ -33,6 +34,7 @@ const Receipt = () => {
           <h2 className="text-2xl font-bold flex justify-center mb-10">
             Total: {receipt.totalAmount} KD
           </h2>
+          <button className="border bg-red-500 w-20 h-10 flex justify-start rounded-full "></button>
           <h1 className="text-3xl font-bold p-4 text-blue-800">
             {receipt.customerName}
           </h1>

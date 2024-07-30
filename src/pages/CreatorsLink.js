@@ -49,10 +49,10 @@ const CreatorsLink = () => {
       .sort((a, b) => b.title?.localeCompare(a.title)) || [];
 
   return (
-    <div className="flex flex-col items-center justify-center w-full lg:w-2/3 xl:w-1/2 mx-auto lg:mx-auto bg-custom-gray">
+    <div className="flex flex-col pt-6  items-center justify-center w-full lg:w-2/3 xl:w-1/2 mx-auto lg:mx-auto bg-custom-gray">
       <div className="w-full ">
         {creator && (
-          <div className="flex flex-row  rounded-full">
+          <div className="flex flex-row rounded-full">
             <div className="p-2 w-[30%] flex justify-center items-center">
               <img
                 src={BASE_URL + "/" + creator.image}
@@ -111,7 +111,7 @@ const CreatorsLink = () => {
         )}
 
         {/* Toggle View Buttons */}
-        <div className="flex justify-center items-center  w-[85%] ml-auto mr-auto gap-1">
+        <div className="flex justify-center items-center pt-4  w-[85%] ml-auto mr-auto gap-1">
           <div className="flex items-center  w-full">
             <label className="input input-bordered flex items-center rounded-[12px]  w-full ">
               <input
@@ -230,7 +230,7 @@ const CreatorsLink = () => {
                   />
                 </div>
                 {/* CONTENT */}
-                <div className="w-full p-5 flex flex-col justify-between">
+                <div className="w-full p-5 flex flex-col justify-between ">
                   <h2 className="mb-8 font-bold ">{product.title}</h2>
 
                   <div

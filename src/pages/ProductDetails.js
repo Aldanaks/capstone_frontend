@@ -27,7 +27,7 @@ const ProductDetails = () => {
 
   if (!product) {
     return (
-      <div className="h-screen flex items-center justify-center">
+      <div className="min-h-full flex items-center justify-center">
         <div className="text-center">
           <h1 className="text-2xl font-bold mb-4">Product not found</h1>
           <button
@@ -42,7 +42,7 @@ const ProductDetails = () => {
   }
 
   return (
-    <div className="flex flex-col items-center justify-center w-full lg:w-2/3 xl:w-1/2 mx-auto lg:mx-auto bg-custom-gray">
+    <div className="flex flex-col items-center justify-center w-full lg:w-2/3 xl:w-1/2 mx-auto lg:mx-auto bg-custom-gray min-h-[94vh]">
       <div className="w-full p-5">
         <div className="flex flex-col items-center">
           <img

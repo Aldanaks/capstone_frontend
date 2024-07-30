@@ -102,7 +102,7 @@ const CheckOut = () => {
   };
 
   return (
-    <div className="bg-custom-gray h-full ">
+    <div className="bg-custom-gray min-h-[94vh]">
       <div className="mt-4">
         <ToastContainer />
       </div>
@@ -129,7 +129,7 @@ const CheckOut = () => {
         </div>
       )}
 
-      <div className="main-content flex justify-center items-center flex-col w-full h-full p-4">
+      <div className="main-content flex justify-center items-center flex-col w-full p-4 ">
         <form onSubmit={handleSubmit} className="w-full max-w-md">
           <label className="input input-bordered flex items-center gap-2 w-full mb-4">
             <input
