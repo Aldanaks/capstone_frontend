@@ -25,9 +25,13 @@ const CheckOut = () => {
       0
     );
   };
-
+  console.log(cartItems.map((item) => item._id));
   const { mutate } = useMutation({
-    mutationFn: (receiptData) => createReceipt(receiptData),
+    mutationFn: (receiptData) =>
+      createReceipt({
+        ...receiptData,
+        products: cartItems.map((item) => item._id),
+      }),
     mutationKey: ["createReceipt"],
     onSuccess: (data) => {
       console.log(data);

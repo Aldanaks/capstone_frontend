@@ -3,7 +3,7 @@ import instance from "axios";
 
 export const createPaymentIntent = async (amount) => {
   const response = await instance.post(
-    "http://localhost:8001/stripe/create-payment-intent",
+    "http://localhost:8000/stripe/create-payment-intent",
     {
       amount,
     }

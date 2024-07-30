@@ -61,7 +61,7 @@ const CreatorsLink = () => {
               />
             </div>
             <div className="w-[70%] rounded-full">
-              <h1 className="text-xl font-bold px-2 ">{creator.username}</h1>
+              <h1 className="text-xl font-bold px-2 ">{creator.name}</h1>
               <p className="text-lg px-2">{creator.bio}</p>
               <div className="flex space-x-4 px-2 py-2  ">
                 {creator?.snapchat && (
@@ -113,7 +113,7 @@ const CreatorsLink = () => {
         {/* Toggle View Buttons */}
         <div className="flex justify-center items-center pt-4  w-[85%] ml-auto mr-auto gap-1">
           <div className="flex items-center  w-full">
-            <label className="input input-bordered flex items-center rounded-[12px]  w-full ">
+            <label className="input input-bordered flex items-center rounded-[12px] w-full ">
               <input
                 type="text"
                 className="grow"
@@ -230,8 +230,8 @@ const CreatorsLink = () => {
                   />
                 </div>
                 {/* CONTENT */}
-                <div className="w-full p-5 flex flex-col justify-between ">
-                  <h2 className="mb-8 font-bold ">{product.title}</h2>
+                <div className="w-full p-5 flex flex-col justify-between text-overflow">
+                  <h2 className="mb-8 font-bold  ">{product.title}</h2>
 
                   <div
                     className="flex flex-col justify-between gap-1 items-center "

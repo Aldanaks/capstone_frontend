@@ -1,7 +1,7 @@
 import axios from "axios";
 // import { getToken } from "./storage";
 
-const BASE_URL = "http://localhost:8001/";
+const BASE_URL = "http://localhost:8000/";
 
 const instance = axios.create({
   baseURL: BASE_URL,
