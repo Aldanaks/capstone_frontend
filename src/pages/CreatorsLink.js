@@ -57,7 +57,7 @@ const CreatorsLink = () => {
               <img
                 src={BASE_URL + "/" + creator.image}
                 alt=""
-                className="w-20 h-20 rounded-full border border-custom-primary-button"
+                className="w-20 h-20 object-cover rounded-full border border-custom-primary-button"
               />
             </div>
             <div className="w-[70%] rounded-full">
