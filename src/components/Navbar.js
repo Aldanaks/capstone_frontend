@@ -21,7 +21,7 @@ const Navbar = () => {
           </a>
         </div>
         <div className="flex-none">
-          <div className="dropdown dropdown-end">
+          <div className="dropdown dropdown-end bg-custom-primary-button">
             <div
               tabIndex={0}
               role="button"
@@ -49,16 +49,18 @@ const Navbar = () => {
             </div>
             <div
               tabIndex={0}
-              className="card card-compact dropdown-content bg-base-100 z-[1] mt-3 w-52 shadow"
+              className="card card-compact dropdown-content bg-white z-[1] mt-3 w-52 shadow"
             >
-              <div className="card-body">
-                <span className="text-lg font-bold">{cartCount} Items</span>
-                <span className="text-info">
+              <div className="!bg-red-400">
+                <span className="text-lg font-bold bg-red-700">
+                  {cartCount} Items
+                </span>
+                <span className="text-info ">
                   Subtotal: {getTotalPrice()} KD{" "}
                 </span>
-                <div className="card-actions flex justify-between p-0">
-                  <button className=" flex justify-start">
-                    <Link to="/cart" className="btn btn-primary">
+                <div className=" flex justify-between p-0 bg-custom-primary-button">
+                  <button className=" flex justify-center bg-custom-primary-button ">
+                    <Link to="/cart" className="bg-custom-primary-button">
                       View Cart
                     </Link>
                   </button>

@@ -6,7 +6,7 @@ import { useQuery } from "@tanstack/react-query";
 import { getProduct } from "../api/product";
 
 const ProductDetails = () => {
-  const { addToCart } = useContext(UserContext);
+  const { addToCart, isInCart } = useContext(UserContext);
   const { productId } = useParams();
   const navigate = useNavigate();
 
@@ -42,7 +42,10 @@ const ProductDetails = () => {
   }
 
   return (
-    <div className="flex flex-col items-center justify-center w-full lg:w-2/3 xl:w-1/2 mx-auto lg:mx-auto bg-custom-gray min-h-[94vh]">
+    <div
+      className="flex flex-col w-full lg:w-2/3 xl:w-1/2 mx-auto lg:mx-auto bg-custom-gray min-h-[94vh]
+    "
+    >
       <div className="w-full p-5">
         <div className="flex flex-col items-center">
           <img
@@ -55,7 +58,7 @@ const ProductDetails = () => {
           <div className="flex gap-5 mt-4">
             <h2 className="text-2xl font-bold">{product.price} KD</h2>
             <button
-              className="   px-6 py-2 shadow-2xl text-black text-sm"
+              className=" px-5 py-2 shadow-2xl text-sm  border rounded-3xl"
               onClick={() => addToCart(product)}
             >
               <svg
@@ -63,7 +66,7 @@ const ProductDetails = () => {
                 className="h-5 w-5"
                 fill="none"
                 viewBox="0 0 24 24"
-                stroke="currentColor"
+                stroke={`${isInCart(product._id) ? "#fb543c" : "#000000"}`}
               >
                 <path
                   strokeLinecap="round"
@@ -73,16 +76,16 @@ const ProductDetails = () => {
                 />
               </svg>
             </button>
-            <button
+            {/* <button
               className="bg-custom-color-button border rounded-3xl px-6 py-2 shadow-2xl text-white text-sm"
               onClick={() => handleBuyNow(product)}
             >
               Buy Now
-            </button>
+            </button> */}
           </div>
           <button
             onClick={() => navigate(`/customersupport`)}
-            className="btn bg-gray-200 text-black mt-4 rounded-full"
+            className="btn bg-gray-200 text-black mt-4 absolute bottom-0 rounded-full"
           >
             Customer Support
           </button>
