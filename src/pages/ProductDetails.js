@@ -15,15 +15,15 @@ const ProductDetails = () => {
     queryFn: () => getProduct(productId),
   });
 
-  const handleBuyNow = (product) => {
-    navigate(`/checkout`, {
-      state: {
-        productTitle: product.title,
-        productPrice: product.price,
-        productImage: BASE_URL + "/" + product.image,
-      },
-    });
-  };
+  // const handleBuyNow = (product) => {
+  //   navigate(`/checkout`, {
+  //     state: {
+  //       productTitle: product.title,
+  //       productPrice: product.price,
+  //       productImage: BASE_URL + "/" + product.image,
+  //     },
+  //   });
+  // };
 
   if (!product) {
     return (
