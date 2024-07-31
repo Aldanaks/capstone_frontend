@@ -13,7 +13,6 @@ const CreatorsLink = () => {
   const [searchTerm, setSearchTerm] = useState("");
 
   const navigate = useNavigate();
-
   const [isGridView, setIsGridView] = useState(false);
 
   const { data: creator } = useQuery({
@@ -230,15 +229,15 @@ const CreatorsLink = () => {
                   />
                 </div>
                 {/* CONTENT */}
-                <div className="w-full p-5 flex flex-col justify-between text-overflow">
+                <div className="w-full p-5 flex flex-col justify-between text-overflow min-h-[20vh] ">
                   <h2 className="mb-8 font-bold  ">{product.title}</h2>
 
                   <div
                     className="flex flex-col justify-between gap-1 items-center "
                     onClick={(e) => e.stopPropagation()}
                   >
-                    <h2 className="flex items-center  mr-auto gap-1">
-                      <span>{product.price} </span> <span> KD</span>
+                    <h2 className="flex  font-bold w-full  mr-auto gap-1">
+                      <span>{product.price}</span> <span> KD</span>
                     </h2>
                     <div className="flex items-center mr-auto flex-row-reverse">
                       <button
@@ -255,7 +254,7 @@ const CreatorsLink = () => {
                           fill="none"
                           viewBox="0 0 24 24"
                           stroke={`${
-                            isInCart(product._id) ? "#7e22ce" : "#000000"
+                            isInCart(product._id) ? "#fb543c" : "#000000"
                           }`}
                         >
                           <path
@@ -268,11 +267,11 @@ const CreatorsLink = () => {
                       </button>
                       <div>
                         <button
-                          className="bg-custom-color-button border rounded-3xl px-6 py-2 shadow-2xl text-gray-100 text-sm"
+                          className="bg-custom-color-button whitespace-nowrap border rounded-3xl px-6 py-2 shadow-2xl text-gray-100 text-sm"
                           type="button"
                           onClick={() => handleBuyNow(product)}
                         >
-                          Buy
+                          Buy Now
                         </button>
                       </div>
                     </div>

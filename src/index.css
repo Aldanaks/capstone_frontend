@@ -12,3 +12,26 @@
 body {
   background-color: rgb(245, 245, 245);
 }
+/* styles.css */
+.truncate-two-lines {
+  display: -webkit-box;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+  -webkit-line-clamp: 2;
+  line-clamp: 2;
+  text-overflow: ellipsis;
+}
+
+button a {
+  background-color: #403a58 !important;
+  border: transparent;
+  color: white !important;
+}
+
+.card-body:nth-child(1) {
+  color: #403a58;
+}
+
+.card-body span + span {
+  color: #fb543c !important;
+}
