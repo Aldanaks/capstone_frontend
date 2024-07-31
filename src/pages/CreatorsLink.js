@@ -218,7 +218,7 @@ const CreatorsLink = () => {
                 <div
                   className={`  ${
                     isGridView
-                      ? "aspect-square h-[200px]  p-5"
+                      ? "aspect-square h-[150px]  p-5"
                       : "h-full w-[300px]  p-5"
                   }`}
                 >
