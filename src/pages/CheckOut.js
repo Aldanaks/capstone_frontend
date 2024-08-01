@@ -63,7 +63,6 @@ const CheckOut = () => {
 
   const handleSubmit = async (event) => {
     event.preventDefault();
-    if (!stripe || !elements) return;
 
     if (email !== confirmEmail) {
       toast.error("Emails do not match");
@@ -76,7 +75,7 @@ const CheckOut = () => {
           toast.success("Payment succeeded!");
           handlePayment();
           // navigate("/receipt");
-        }
+        
       
     } catch (error) {
       console.error("Payment failed:", error);
