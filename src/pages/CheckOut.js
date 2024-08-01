@@ -72,31 +72,12 @@ const CheckOut = () => {
     setPaymentProcessing(true);
 
     try {
-      const totalPrice = getTotalPrice();
-      const clientSecret = await createPaymentIntent(
-        Math.ceil(totalPrice * 1000)
-      );
 
-      const result = await stripe.confirmCardPayment(clientSecret, {
-        payment_method: {
-          card: elements.getElement(CardElement),
-          billing_details: {
-            email,
-            name,
-          },
-        },
-      });
-
-      if (result.error) {
-        console.log(result.error.message);
-        toast.error(result.error.message);
-      } else {
-        if (result.paymentIntent.status === "succeeded") {
           toast.success("Payment succeeded!");
           handlePayment();
           // navigate("/receipt");
         }
-      }
+      
     } catch (error) {
       console.error("Payment failed:", error);
       toast.error("Payment failed: " + error.message);
