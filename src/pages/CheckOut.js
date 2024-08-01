@@ -1,7 +1,6 @@
 import React, { useContext, useState } from "react";
 import { useLocation, useNavigate } from "react-router";
 import UserContext from "../context/UserContext";
-import { createPaymentIntent } from "../api/stripe";
 import { CardElement, useStripe, useElements } from "@stripe/react-stripe-js";
 import { useMutation } from "@tanstack/react-query";
 import { createReceipt } from "../api/receipt";
@@ -71,12 +70,9 @@ const CheckOut = () => {
     setPaymentProcessing(true);
 
     try {
-
-          toast.success("Payment succeeded!");
-          handlePayment();
-          // navigate("/receipt");
-        
-      
+      toast.success("Payment succeeded!");
+      handlePayment();
+      // navigate("/receipt");
     } catch (error) {
       console.error("Payment failed:", error);
       toast.error("Payment failed: " + error.message);
