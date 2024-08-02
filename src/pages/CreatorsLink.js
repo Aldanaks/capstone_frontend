@@ -243,7 +243,8 @@ const CreatorsLink = () => {
                     onClick={(e) => e.stopPropagation()}
                   >
                     <h2 className="flex  font-bold w-full  mr-auto gap-1">
-                      <span>{product.price}</span> <span> KD</span>
+                      <span> Price: </span> <span>{product.price}</span>{" "}
+                      <span> KD</span>
                     </h2>
                     <div className="flex items-center mr-auto flex-row-reverse">
                       <button

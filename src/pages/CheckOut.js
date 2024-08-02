@@ -121,6 +121,7 @@ const CheckOut = () => {
             />
           </label>
           <label className="input input-bordered flex items-center gap-2 w-full mb-4">
+            <h1> Card information</h1>
             <input
               type="email"
               className="grow p-2"
@@ -129,7 +130,9 @@ const CheckOut = () => {
               onChange={(e) => setconfirmEmail(e.target.value)}
             />
           </label>
+
           <label className="input input-bordered flex items-center gap-2 w-full mb-4">
+            <h1> Card information</h1>
             <input
               type="text"
               className="grow p-2"
@@ -140,10 +143,6 @@ const CheckOut = () => {
           </label>
           <CardElement className="grow p-2 w-full mb-4 border border-gray-300 rounded-lg  " />
           <div className="flex flex-col justify-end w-full">
-            <h1 className="text-sm text-gray-400 mb-2">
-              This payment is processed through Stripe
-            </h1>
-
             <button
               className="btn bg-custom-primary-button mb-4 text-white "
               type="submit"
@@ -151,6 +150,9 @@ const CheckOut = () => {
             >
               {paymentProcessing ? "Processing..." : "Pay"}
             </button>
+            <h1 className="text-sm text-gray-400 mb-2">
+              Powered by <span className="font-bold font-mono"> Stripe </span>
+            </h1>
           </div>
         </form>
         <div className="w-full flex justify-center mt-3">
