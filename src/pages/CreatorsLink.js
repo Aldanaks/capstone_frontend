@@ -15,7 +15,7 @@ const CreatorsLink = () => {
   const navigate = useNavigate();
   const [isGridView, setIsGridView] = useState(false);
 
-  const { data: creator } = useQuery({
+  const { data: creator, isLoading } = useQuery({
     queryKey: ["getAllProductsByCreator", creatorUsername],
     queryFn: () => getAllProductsByCreator(creatorUsername),
   });
@@ -23,6 +23,12 @@ const CreatorsLink = () => {
   useEffect(() => {
     setUser(creator);
   }, [creator, setUser]);
+
+  if (isLoading) {
+    <div className="flex items-center justify-center min-h-screen bg-gray-100">
+      <div className="text-4xl font-bold text-black">Loading...</div>
+    </div>;
+  }
 
   const handleCardClick = (product) => {
     console.log(product);
